@@ -1,0 +1,331 @@
+{
+  "$defs": {
+    "ActionCapability": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "allowed_target_kinds": {
+          "items": {
+            "$ref": "#/$defs/TargetKind"
+          },
+          "minItems": 1,
+          "title": "Allowed Target Kinds",
+          "type": "array"
+        },
+        "description": {
+          "maxLength": 240,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "allowed_target_kinds",
+        "description"
+      ],
+      "title": "ActionCapability",
+      "type": "object"
+    },
+    "Compare": {
+      "enum": [
+        "EQ",
+        "ONE_OF",
+        "GTE",
+        "LTE",
+        "EXISTS"
+      ],
+      "title": "Compare",
+      "type": "string"
+    },
+    "EvidenceRule": {
+      "additionalProperties": false,
+      "description": "Predicate matched against an actual observation, not an LLM assertion.",
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "subject": {
+          "$ref": "#/$defs/SubjectSelector"
+        },
+        "property": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Property",
+          "type": "string"
+        },
+        "operator": {
+          "$ref": "#/$defs/Compare"
+        },
+        "expected": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ]
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected"
+        },
+        "min_confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Min Confidence",
+          "type": "number"
+        },
+        "allowed_producers": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+            "type": "string"
+          },
+          "minItems": 1,
+          "title": "Allowed Producers",
+          "type": "array"
+        },
+        "max_age_s": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Age S"
+        }
+      },
+      "required": [
+        "id",
+        "subject",
+        "property",
+        "operator",
+        "min_confidence",
+        "allowed_producers"
+      ],
+      "title": "EvidenceRule",
+      "type": "object"
+    },
+    "GoalDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "description": {
+          "maxLength": 400,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "priority": {
+          "default": 1.0,
+          "exclusiveMinimum": 0.0,
+          "title": "Priority",
+          "type": "number"
+        },
+        "depends_on": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+            "type": "string"
+          },
+          "title": "Depends On",
+          "type": "array"
+        },
+        "evidence_logic": {
+          "default": "ALL",
+          "enum": [
+            "ALL",
+            "ANY"
+          ],
+          "title": "Evidence Logic",
+          "type": "string"
+        },
+        "evidence_rules": {
+          "items": {
+            "$ref": "#/$defs/EvidenceRule"
+          },
+          "minItems": 1,
+          "title": "Evidence Rules",
+          "type": "array"
+        },
+        "bind_entity_as": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Bind Entity As"
+        }
+      },
+      "required": [
+        "id",
+        "description",
+        "evidence_rules"
+      ],
+      "title": "GoalDefinition",
+      "type": "object"
+    },
+    "SubjectKind": {
+      "enum": [
+        "ENTITY",
+        "CLASS",
+        "BINDING",
+        "ROBOT",
+        "REGION"
+      ],
+      "title": "SubjectKind",
+      "type": "string"
+    },
+    "SubjectSelector": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/SubjectKind"
+        },
+        "ref": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "ref"
+      ],
+      "title": "SubjectSelector",
+      "type": "object"
+    },
+    "TargetKind": {
+      "enum": [
+        "NONE",
+        "FRONTIER",
+        "ENTITY",
+        "VIEWPOINT",
+        "GOAL",
+        "REGION"
+      ],
+      "title": "TargetKind",
+      "type": "string"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "2.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mission_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+      "title": "Mission Id",
+      "type": "string"
+    },
+    "revision": {
+      "minimum": 1,
+      "title": "Revision",
+      "type": "integer"
+    },
+    "description": {
+      "maxLength": 500,
+      "minLength": 1,
+      "title": "Description",
+      "type": "string"
+    },
+    "robot_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+      "title": "Robot Id",
+      "type": "string"
+    },
+    "goals": {
+      "items": {
+        "$ref": "#/$defs/GoalDefinition"
+      },
+      "minItems": 1,
+      "title": "Goals",
+      "type": "array"
+    },
+    "capabilities": {
+      "items": {
+        "$ref": "#/$defs/ActionCapability"
+      },
+      "minItems": 1,
+      "title": "Capabilities",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "mission_id",
+    "revision",
+    "description",
+    "robot_id",
+    "goals",
+    "capabilities"
+  ],
+  "title": "MissionSpec",
+  "type": "object"
+}

@@ -1,0 +1,6 @@
+**.venv**
+**.pyt**
+**.pyc**
+**/examples**
+**__pycache__**
+**info**

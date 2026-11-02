@@ -1,0 +1,613 @@
+{
+  "$defs": {
+    "ActionCost": {
+      "additionalProperties": false,
+      "properties": {
+        "execute_energy_wh": {
+          "minimum": 0.0,
+          "title": "Execute Energy Wh",
+          "type": "number"
+        },
+        "return_energy_wh_from_endpoint": {
+          "minimum": 0.0,
+          "title": "Return Energy Wh From Endpoint",
+          "type": "number"
+        },
+        "execute_time_s": {
+          "minimum": 0.0,
+          "title": "Execute Time S",
+          "type": "number"
+        },
+        "return_time_s_from_endpoint": {
+          "minimum": 0.0,
+          "title": "Return Time S From Endpoint",
+          "type": "number"
+        }
+      },
+      "required": [
+        "execute_energy_wh",
+        "return_energy_wh_from_endpoint",
+        "execute_time_s",
+        "return_time_s_from_endpoint"
+      ],
+      "title": "ActionCost",
+      "type": "object"
+    },
+    "ActionTarget": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "$ref": "#/$defs/TargetKind"
+        },
+        "ref": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ref"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "ActionTarget",
+      "type": "object"
+    },
+    "CandidateAction": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "capability_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Capability Id",
+          "type": "string"
+        },
+        "target": {
+          "$ref": "#/$defs/ActionTarget"
+        },
+        "relevant_goal_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+            "type": "string"
+          },
+          "title": "Relevant Goal Ids",
+          "type": "array"
+        },
+        "cost": {
+          "$ref": "#/$defs/ActionCost"
+        },
+        "geometric_gain": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Geometric Gain"
+        },
+        "evidence_gain_hint": {
+          "anyOf": [
+            {
+              "maximum": 1.0,
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence Gain Hint"
+        }
+      },
+      "required": [
+        "id",
+        "capability_id",
+        "target",
+        "relevant_goal_ids",
+        "cost"
+      ],
+      "title": "CandidateAction",
+      "type": "object"
+    },
+    "Frontier": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "map_version": {
+          "minimum": 0,
+          "title": "Map Version",
+          "type": "integer"
+        },
+        "observation_pose": {
+          "$ref": "#/$defs/Position"
+        },
+        "expected_information_gain": {
+          "minimum": 0.0,
+          "title": "Expected Information Gain",
+          "type": "number"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "map_version",
+        "observation_pose",
+        "expected_information_gain",
+        "confidence"
+      ],
+      "title": "Frontier",
+      "type": "object"
+    },
+    "GoalProgress": {
+      "additionalProperties": false,
+      "properties": {
+        "goal_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Goal Id",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/GoalStatus"
+        },
+        "evidence_ids": {
+          "items": {
+            "maxLength": 128,
+            "minLength": 1,
+            "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+            "type": "string"
+          },
+          "title": "Evidence Ids",
+          "type": "array"
+        },
+        "failure_reason": {
+          "anyOf": [
+            {
+              "maxLength": 300,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Failure Reason"
+        }
+      },
+      "required": [
+        "goal_id",
+        "status"
+      ],
+      "title": "GoalProgress",
+      "type": "object"
+    },
+    "GoalStatus": {
+      "enum": [
+        "UNKNOWN",
+        "PENDING",
+        "VERIFIED",
+        "FAILED"
+      ],
+      "title": "GoalStatus",
+      "type": "string"
+    },
+    "Observation": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "subject_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Subject Id",
+          "type": "string"
+        },
+        "subject_class": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Subject Class",
+          "type": "string"
+        },
+        "property": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Property",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "integer"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Value"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "producer_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Producer Id",
+          "type": "string"
+        },
+        "producer_kind": {
+          "enum": [
+            "SIMULATOR",
+            "PERCEPTION",
+            "GEOMETRY",
+            "NAVIGATION",
+            "EXECUTOR"
+          ],
+          "title": "Producer Kind",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "frame_id": {
+          "anyOf": [
+            {
+              "maxLength": 128,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Frame Id"
+        },
+        "artifact_ref": {
+          "anyOf": [
+            {
+              "maxLength": 500,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Artifact Ref"
+        }
+      },
+      "required": [
+        "id",
+        "subject_id",
+        "subject_class",
+        "property",
+        "value",
+        "confidence",
+        "producer_id",
+        "producer_kind",
+        "observed_at"
+      ],
+      "title": "Observation",
+      "type": "object"
+    },
+    "Position": {
+      "additionalProperties": false,
+      "properties": {
+        "x": {
+          "title": "X",
+          "type": "number"
+        },
+        "y": {
+          "title": "Y",
+          "type": "number"
+        },
+        "z": {
+          "title": "Z",
+          "type": "number"
+        },
+        "frame_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Frame Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "z",
+        "frame_id"
+      ],
+      "title": "Position",
+      "type": "object"
+    },
+    "Resources": {
+      "additionalProperties": false,
+      "properties": {
+        "remaining_energy_wh": {
+          "minimum": 0.0,
+          "title": "Remaining Energy Wh",
+          "type": "number"
+        },
+        "reserve_energy_wh": {
+          "minimum": 0.0,
+          "title": "Reserve Energy Wh",
+          "type": "number"
+        },
+        "remaining_flight_time_s": {
+          "minimum": 0.0,
+          "title": "Remaining Flight Time S",
+          "type": "number"
+        },
+        "reserve_time_s": {
+          "minimum": 0.0,
+          "title": "Reserve Time S",
+          "type": "number"
+        },
+        "current_return_energy_wh": {
+          "minimum": 0.0,
+          "title": "Current Return Energy Wh",
+          "type": "number"
+        },
+        "current_return_time_s": {
+          "minimum": 0.0,
+          "title": "Current Return Time S",
+          "type": "number"
+        }
+      },
+      "required": [
+        "remaining_energy_wh",
+        "reserve_energy_wh",
+        "remaining_flight_time_s",
+        "reserve_time_s",
+        "current_return_energy_wh",
+        "current_return_time_s"
+      ],
+      "title": "Resources",
+      "type": "object"
+    },
+    "TargetKind": {
+      "enum": [
+        "NONE",
+        "FRONTIER",
+        "ENTITY",
+        "VIEWPOINT",
+        "GOAL",
+        "REGION"
+      ],
+      "title": "TargetKind",
+      "type": "string"
+    },
+    "WorldEntity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Id",
+          "type": "string"
+        },
+        "class_id": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "title": "Class Id",
+          "type": "string"
+        },
+        "confidence": {
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        },
+        "position": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Position"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "id",
+        "class_id",
+        "confidence"
+      ],
+      "title": "WorldEntity",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "2.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mission_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+      "title": "Mission Id",
+      "type": "string"
+    },
+    "spec_revision": {
+      "minimum": 1,
+      "title": "Spec Revision",
+      "type": "integer"
+    },
+    "state_seq": {
+      "minimum": 0,
+      "title": "State Seq",
+      "type": "integer"
+    },
+    "map_version": {
+      "minimum": 0,
+      "title": "Map Version",
+      "type": "integer"
+    },
+    "captured_at": {
+      "format": "date-time",
+      "title": "Captured At",
+      "type": "string"
+    },
+    "robot_pose": {
+      "$ref": "#/$defs/Position"
+    },
+    "goals": {
+      "items": {
+        "$ref": "#/$defs/GoalProgress"
+      },
+      "title": "Goals",
+      "type": "array"
+    },
+    "bindings": {
+      "patternProperties": {
+        "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$": {
+          "maxLength": 128,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+          "type": "string"
+        }
+      },
+      "propertyNames": {
+        "maxLength": 128,
+        "minLength": 1
+      },
+      "title": "Bindings",
+      "type": "object"
+    },
+    "entities": {
+      "items": {
+        "$ref": "#/$defs/WorldEntity"
+      },
+      "title": "Entities",
+      "type": "array"
+    },
+    "frontiers": {
+      "items": {
+        "$ref": "#/$defs/Frontier"
+      },
+      "title": "Frontiers",
+      "type": "array"
+    },
+    "viewpoint_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+        "type": "string"
+      },
+      "title": "Viewpoint Ids",
+      "type": "array"
+    },
+    "region_ids": {
+      "items": {
+        "maxLength": 128,
+        "minLength": 1,
+        "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+        "type": "string"
+      },
+      "title": "Region Ids",
+      "type": "array"
+    },
+    "observations": {
+      "items": {
+        "$ref": "#/$defs/Observation"
+      },
+      "title": "Observations",
+      "type": "array"
+    },
+    "resources": {
+      "$ref": "#/$defs/Resources"
+    },
+    "candidates": {
+      "items": {
+        "$ref": "#/$defs/CandidateAction"
+      },
+      "title": "Candidates",
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "mission_id",
+    "spec_revision",
+    "state_seq",
+    "map_version",
+    "captured_at",
+    "robot_pose",
+    "goals",
+    "entities",
+    "frontiers",
+    "viewpoint_ids",
+    "region_ids",
+    "observations",
+    "resources",
+    "candidates"
+  ],
+  "title": "MissionSnapshot",
+  "type": "object"
+}

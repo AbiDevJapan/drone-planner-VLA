@@ -1,0 +1,55 @@
+{
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "2.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "mission_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+      "title": "Mission Id",
+      "type": "string"
+    },
+    "spec_revision": {
+      "minimum": 1,
+      "title": "Spec Revision",
+      "type": "integer"
+    },
+    "state_seq": {
+      "minimum": 0,
+      "title": "State Seq",
+      "type": "integer"
+    },
+    "map_version": {
+      "minimum": 0,
+      "title": "Map Version",
+      "type": "integer"
+    },
+    "action_id": {
+      "maxLength": 128,
+      "minLength": 1,
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$",
+      "title": "Action Id",
+      "type": "string"
+    },
+    "rationale": {
+      "maxLength": 240,
+      "title": "Rationale",
+      "type": "string"
+    }
+  },
+  "required": [
+    "schema_version",
+    "mission_id",
+    "spec_revision",
+    "state_seq",
+    "map_version",
+    "action_id",
+    "rationale"
+  ],
+  "title": "PlannerDecision",
+  "type": "object"
+}
