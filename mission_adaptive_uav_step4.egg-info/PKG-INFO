@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: mission-adaptive-uav-step4
+Version: 2.4.0
+Summary: Step 4 mission-aware offboard Ollama planner with independent simulation safety
+Requires-Python: >=3.10
+Requires-Dist: pydantic<3,>=2.7
+Requires-Dist: python-dotenv<2,>=1.0
+Provides-Extra: dev
+Requires-Dist: pytest>=8; extra == "dev"
+Provides-Extra: viz
+Requires-Dist: matplotlib>=3.7; extra == "viz"
+Requires-Dist: Pillow>=10.0; extra == "viz"

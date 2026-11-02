@@ -3,15 +3,16 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mission-adaptive-uav-schema-v2"
-version = "2.0.0"
-description = "Mission-agnostic UAV planning state and decision contract"
+name = "mission-adaptive-uav-step5"
+version = "2.5.0"
+description = "Read-only ROS2 FAST-LIVO2 and Livox mission-state bridge, retaining Step4 simulator"
 requires-python = ">=3.10"
-dependencies = ["pydantic>=2.7,<3"]
+dependencies = ["pydantic>=2.7,<3", "python-dotenv>=1.0,<2"]
 
 [project.optional-dependencies]
 dev = ["pytest>=8"]
+viz = ["matplotlib>=3.7", "Pillow>=10.0"]
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["interfaces*"]
+include = ["interfaces*", "simulation*", "visualization*", "safety*", "offboard*", "ros2_bridge*"]

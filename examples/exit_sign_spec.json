@@ -1,0 +1,131 @@
+{
+  "schema_version": "2.0",
+  "mission_id": "exit_001",
+  "revision": 1,
+  "description": "Locate and read the exit sign; return safely",
+  "robot_id": "uav_1",
+  "goals": [
+    {
+      "id": "locate",
+      "description": "Find an exit sign",
+      "priority": 1.0,
+      "depends_on": [],
+      "evidence_logic": "ALL",
+      "evidence_rules": [
+        {
+          "id": "r_find",
+          "subject": {
+            "kind": "CLASS",
+            "ref": "exit_sign"
+          },
+          "property": "detected",
+          "operator": "EQ",
+          "expected": true,
+          "min_confidence": 0.9,
+          "allowed_producers": [
+            "sim_detector"
+          ],
+          "max_age_s": 1800.0
+        }
+      ],
+      "bind_entity_as": "sign"
+    },
+    {
+      "id": "read",
+      "description": "Read the exit sign text",
+      "priority": 1.0,
+      "depends_on": [
+        "locate"
+      ],
+      "evidence_logic": "ALL",
+      "evidence_rules": [
+        {
+          "id": "r_read",
+          "subject": {
+            "kind": "BINDING",
+            "ref": "sign"
+          },
+          "property": "recognized_text",
+          "operator": "EQ",
+          "expected": "EXIT",
+          "min_confidence": 0.9,
+          "allowed_producers": [
+            "sim_ocr"
+          ],
+          "max_age_s": 1800.0
+        }
+      ],
+      "bind_entity_as": null
+    },
+    {
+      "id": "return",
+      "description": "Return home",
+      "priority": 1.0,
+      "depends_on": [],
+      "evidence_logic": "ALL",
+      "evidence_rules": [
+        {
+          "id": "r_home",
+          "subject": {
+            "kind": "ROBOT",
+            "ref": "uav_1"
+          },
+          "property": "at_home",
+          "operator": "EQ",
+          "expected": true,
+          "min_confidence": 1.0,
+          "allowed_producers": [
+            "sim_executor"
+          ],
+          "max_age_s": 1800.0
+        }
+      ],
+      "bind_entity_as": null
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "uav.explore",
+      "allowed_target_kinds": [
+        "FRONTIER"
+      ],
+      "description": "Observe a frontier from a geometrically safe viewpoint"
+    },
+    {
+      "id": "uav.inspect",
+      "allowed_target_kinds": [
+        "ENTITY",
+        "REGION"
+      ],
+      "description": "Gather evidence about an entity or region"
+    },
+    {
+      "id": "uav.revisit",
+      "allowed_target_kinds": [
+        "VIEWPOINT"
+      ],
+      "description": "Revisit an established observation viewpoint"
+    },
+    {
+      "id": "uav.verify",
+      "allowed_target_kinds": [
+        "GOAL"
+      ],
+      "description": "Run goal verification from accumulated observations"
+    },
+    {
+      "id": "uav.return_home",
+      "allowed_target_kinds": [
+        "NONE"
+      ],
+      "description": "Return using validated onboard return plan"
+    },
+    {
+      "id": "uav.report",
+      "allowed_target_kinds": [
+        "NONE"
+      ],
+      "description": "Report findings, including incomplete objectives"
+    }
+  ]
+}

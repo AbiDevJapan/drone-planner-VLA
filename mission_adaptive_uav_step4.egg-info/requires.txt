@@ -1,0 +1,9 @@
+pydantic<3,>=2.7
+python-dotenv<2,>=1.0
+
+[dev]
+pytest>=8
+
+[viz]
+matplotlib>=3.7
+Pillow>=10.0

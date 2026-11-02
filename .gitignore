@@ -1,6 +1,7 @@
-**.venv**
-**.pyt**
-**.pyc**
-**/examples**
-**__pycache__**
-**info**
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+*.pyc
+outputs/
+**outputs**

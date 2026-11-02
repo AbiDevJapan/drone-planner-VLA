@@ -1,0 +1,150 @@
+{
+  "schema_version": "2.0",
+  "mission_id": "warehouse_001",
+  "spec_revision": 1,
+  "state_seq": 2,
+  "map_version": 3,
+  "captured_at": "2026-11-02T04:05:00Z",
+  "robot_pose": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.5,
+    "frame_id": "map"
+  },
+  "goals": [
+    {
+      "goal_id": "locate",
+      "status": "VERIFIED",
+      "evidence_ids": [
+        "w_det"
+      ],
+      "failure_reason": null
+    },
+    {
+      "goal_id": "access",
+      "status": "VERIFIED",
+      "evidence_ids": [
+        "w_access"
+      ],
+      "failure_reason": null
+    },
+    {
+      "goal_id": "return",
+      "status": "PENDING",
+      "evidence_ids": [],
+      "failure_reason": null
+    }
+  ],
+  "bindings": {
+    "target_equipment": "ext_2"
+  },
+  "entities": [
+    {
+      "id": "ext_2",
+      "class_id": "fire_extinguisher",
+      "confidence": 0.97,
+      "position": {
+        "x": 3.0,
+        "y": 1.0,
+        "z": 1.5,
+        "frame_id": "map"
+      }
+    }
+  ],
+  "frontiers": [
+    {
+      "id": "f_1",
+      "map_version": 3,
+      "observation_pose": {
+        "x": 8.0,
+        "y": 1.0,
+        "z": 1.5,
+        "frame_id": "map"
+      },
+      "expected_information_gain": 42.0,
+      "confidence": 0.78
+    }
+  ],
+  "viewpoint_ids": [
+    "v_1"
+  ],
+  "region_ids": [
+    "r_1"
+  ],
+  "observations": [
+    {
+      "id": "w_det",
+      "subject_id": "ext_2",
+      "subject_class": "fire_extinguisher",
+      "property": "detected",
+      "value": true,
+      "confidence": 0.96,
+      "producer_id": "sim_detector",
+      "producer_kind": "SIMULATOR",
+      "observed_at": "2026-11-02T04:04:00Z",
+      "frame_id": "map",
+      "artifact_ref": null
+    },
+    {
+      "id": "w_access",
+      "subject_id": "ext_2",
+      "subject_class": "fire_extinguisher",
+      "property": "access_state",
+      "value": "BLOCKED",
+      "confidence": 0.94,
+      "producer_id": "sim_geometry",
+      "producer_kind": "SIMULATOR",
+      "observed_at": "2026-11-02T04:04:00Z",
+      "frame_id": "map",
+      "artifact_ref": null
+    }
+  ],
+  "resources": {
+    "remaining_energy_wh": 35.0,
+    "reserve_energy_wh": 8.0,
+    "remaining_flight_time_s": 480.0,
+    "reserve_time_s": 90.0,
+    "current_return_energy_wh": 8.0,
+    "current_return_time_s": 90.0
+  },
+  "candidates": [
+    {
+      "id": "w_return",
+      "capability_id": "uav.return_home",
+      "target": {
+        "kind": "NONE",
+        "ref": null
+      },
+      "relevant_goal_ids": [
+        "return"
+      ],
+      "cost": {
+        "execute_energy_wh": 4.0,
+        "return_energy_wh_from_endpoint": 8.0,
+        "execute_time_s": 50.0,
+        "return_time_s_from_endpoint": 90.0
+      },
+      "geometric_gain": null,
+      "evidence_gain_hint": null
+    },
+    {
+      "id": "w_frontier",
+      "capability_id": "uav.explore",
+      "target": {
+        "kind": "FRONTIER",
+        "ref": "f_1"
+      },
+      "relevant_goal_ids": [
+        "locate"
+      ],
+      "cost": {
+        "execute_energy_wh": 4.0,
+        "return_energy_wh_from_endpoint": 8.0,
+        "execute_time_s": 50.0,
+        "return_time_s_from_endpoint": 90.0
+      },
+      "geometric_gain": null,
+      "evidence_gain_hint": null
+    }
+  ]
+}

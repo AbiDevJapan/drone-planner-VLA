@@ -1,0 +1,108 @@
+{
+  "schema_version": "2.0",
+  "mission_id": "thermal_001",
+  "spec_revision": 1,
+  "state_seq": 2,
+  "map_version": 3,
+  "captured_at": "2026-11-02T04:05:00Z",
+  "robot_pose": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 1.5,
+    "frame_id": "map"
+  },
+  "goals": [
+    {
+      "goal_id": "temperature",
+      "status": "VERIFIED",
+      "evidence_ids": [
+        "thermal_4"
+      ],
+      "failure_reason": null
+    },
+    {
+      "goal_id": "return",
+      "status": "PENDING",
+      "evidence_ids": [],
+      "failure_reason": null
+    }
+  ],
+  "bindings": {},
+  "entities": [
+    {
+      "id": "motor_1",
+      "class_id": "motor",
+      "confidence": 0.99,
+      "position": {
+        "x": 3.0,
+        "y": 1.0,
+        "z": 1.5,
+        "frame_id": "map"
+      }
+    }
+  ],
+  "frontiers": [
+    {
+      "id": "f_1",
+      "map_version": 3,
+      "observation_pose": {
+        "x": 8.0,
+        "y": 1.0,
+        "z": 1.5,
+        "frame_id": "map"
+      },
+      "expected_information_gain": 42.0,
+      "confidence": 0.78
+    }
+  ],
+  "viewpoint_ids": [
+    "v_1"
+  ],
+  "region_ids": [
+    "r_1"
+  ],
+  "observations": [
+    {
+      "id": "thermal_4",
+      "subject_id": "motor_1",
+      "subject_class": "motor",
+      "property": "temperature_c",
+      "value": 73.4,
+      "confidence": 0.91,
+      "producer_id": "sim_thermal",
+      "producer_kind": "SIMULATOR",
+      "observed_at": "2026-11-02T04:04:00Z",
+      "frame_id": "map",
+      "artifact_ref": null
+    }
+  ],
+  "resources": {
+    "remaining_energy_wh": 35.0,
+    "reserve_energy_wh": 8.0,
+    "remaining_flight_time_s": 480.0,
+    "reserve_time_s": 90.0,
+    "current_return_energy_wh": 8.0,
+    "current_return_time_s": 90.0
+  },
+  "candidates": [
+    {
+      "id": "thermal_return",
+      "capability_id": "uav.return_home",
+      "target": {
+        "kind": "NONE",
+        "ref": null
+      },
+      "relevant_goal_ids": [
+        "return"
+      ],
+      "cost": {
+        "execute_energy_wh": 4.0,
+        "return_energy_wh_from_endpoint": 8.0,
+        "execute_time_s": 50.0,
+        "return_time_s_from_endpoint": 90.0
+      },
+      "geometric_gain": null,
+      "evidence_gain_hint": null
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "schema_version": "2.0",
+  "mission_id": "warehouse_001",
+  "revision": 1,
+  "description": "Locate fire extinguisher; assess access; return safely",
+  "robot_id": "uav_1",
+  "goals": [
+    {
+      "id": "locate",
+      "description": "Find a fire extinguisher",
+      "priority": 1.0,
+      "depends_on": [],
+      "evidence_logic": "ALL",
+      "evidence_rules": [
+        {
+          "id": "r_det",
+          "subject": {
+            "kind": "CLASS",
+            "ref": "fire_extinguisher"
+          },
+          "property": "detected",
+          "operator": "EQ",
+          "expected": true,
+          "min_confidence": 0.9,
+          "allowed_producers": [
+            "sim_detector"
+          ],
+          "max_age_s": 1800.0
+        }
+      ],
+      "bind_entity_as": "target_equipment"
+    },
+    {
+      "id": "access",
+      "description": "Assess whether target access is clear or blocked",
+      "priority": 1.0,
+      "depends_on": [
+        "locate"
+      ],
+      "evidence_logic": "ALL",
+      "evidence_rules": [
+        {
+          "id": "r_access",
+          "subject": {
+            "kind": "BINDING",
+            "ref": "target_equipment"
+          },
+          "property": "access_state",
+          "operator": "ONE_OF",
+          "expected": [
+            "CLEAR",
+            "BLOCKED"
+          ],
+          "min_confidence": 0.85,
+          "allowed_producers": [
+            "sim_geometry"
+          ],
+          "max_age_s": 1800.0
+        }
+      ],
+      "bind_entity_as": null
+    },
+    {
+      "id": "return",
+      "description": "Return to home",
+      "priority": 1.0,
+      "depends_on": [],
+      "evidence_logic": "ALL",
+      "evidence_rules": [
+        {
+          "id": "r_home",
+          "subject": {
+            "kind": "ROBOT",
+            "ref": "uav_1"
+          },
+          "property": "at_home",
+          "operator": "EQ",
+          "expected": true,
+          "min_confidence": 1.0,
+          "allowed_producers": [
+            "sim_executor"
+          ],
+          "max_age_s": 1800.0
+        }
+      ],
+      "bind_entity_as": null
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "uav.explore",
+      "allowed_target_kinds": [
+        "FRONTIER"
+      ],
+      "description": "Observe a frontier from a geometrically safe viewpoint"
+    },
+    {
+      "id": "uav.inspect",
+      "allowed_target_kinds": [
+        "ENTITY",
+        "REGION"
+      ],
+      "description": "Gather evidence about an entity or region"
+    },
+    {
+      "id": "uav.revisit",
+      "allowed_target_kinds": [
+        "VIEWPOINT"
+      ],
+      "description": "Revisit an established observation viewpoint"
+    },
+    {
+      "id": "uav.verify",
+      "allowed_target_kinds": [
+        "GOAL"
+      ],
+      "description": "Run goal verification from accumulated observations"
+    },
+    {
+      "id": "uav.return_home",
+      "allowed_target_kinds": [
+        "NONE"
+      ],
+      "description": "Return using validated onboard return plan"
+    },
+    {
+      "id": "uav.report",
+      "allowed_target_kinds": [
+        "NONE"
+      ],
+      "description": "Report findings, including incomplete objectives"
+    }
+  ]
+}

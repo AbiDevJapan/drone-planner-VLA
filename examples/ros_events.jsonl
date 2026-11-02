@@ -1,0 +1,62 @@
+{"type": "odom", "stamp_s": 1793620000.0, "frame_id": "map", "child_frame_id": "base_link", "position": [0.0, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620000.0, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620000.1, "frame_id": "map", "child_frame_id": "base_link", "position": [0.15, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620000.2, "frame_id": "map", "child_frame_id": "base_link", "position": [0.3, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620000.2, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620000.3, "frame_id": "map", "child_frame_id": "base_link", "position": [0.44999999999999996, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620000.4, "frame_id": "map", "child_frame_id": "base_link", "position": [0.6, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620000.4, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620000.5, "frame_id": "map", "child_frame_id": "base_link", "position": [0.75, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620000.6, "frame_id": "map", "child_frame_id": "base_link", "position": [0.8999999999999999, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620000.6, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620000.7, "frame_id": "map", "child_frame_id": "base_link", "position": [1.05, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620000.8, "frame_id": "map", "child_frame_id": "base_link", "position": [1.2, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620000.8, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620000.9, "frame_id": "map", "child_frame_id": "base_link", "position": [1.3499999999999999, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620001.0, "frame_id": "map", "child_frame_id": "base_link", "position": [1.5, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620001.0, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620001.1, "frame_id": "map", "child_frame_id": "base_link", "position": [1.65, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620001.2, "frame_id": "map", "child_frame_id": "base_link", "position": [1.7999999999999998, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620001.2, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620001.3, "frame_id": "map", "child_frame_id": "base_link", "position": [1.95, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620001.4, "frame_id": "map", "child_frame_id": "base_link", "position": [2.1, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620001.4, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620001.5, "frame_id": "map", "child_frame_id": "base_link", "position": [2.25, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620001.6, "frame_id": "map", "child_frame_id": "base_link", "position": [2.4, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620001.6, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620001.7, "frame_id": "map", "child_frame_id": "base_link", "position": [2.55, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620001.8, "frame_id": "map", "child_frame_id": "base_link", "position": [2.6999999999999997, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620001.8, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620001.9, "frame_id": "map", "child_frame_id": "base_link", "position": [2.85, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620002.0, "frame_id": "map", "child_frame_id": "base_link", "position": [3.0, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620002.0, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620002.1, "frame_id": "map", "child_frame_id": "base_link", "position": [3.15, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620002.2, "frame_id": "map", "child_frame_id": "base_link", "position": [3.3, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620002.2, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620002.3, "frame_id": "map", "child_frame_id": "base_link", "position": [3.4499999999999997, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620002.4, "frame_id": "map", "child_frame_id": "base_link", "position": [3.5999999999999996, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620002.4, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620002.5, "frame_id": "map", "child_frame_id": "base_link", "position": [3.75, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620002.6, "frame_id": "map", "child_frame_id": "base_link", "position": [3.9, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620002.6, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620002.7, "frame_id": "map", "child_frame_id": "base_link", "position": [4.05, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620002.8, "frame_id": "map", "child_frame_id": "base_link", "position": [4.2, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620002.8, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620002.9, "frame_id": "map", "child_frame_id": "base_link", "position": [4.35, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620003.0, "frame_id": "map", "child_frame_id": "base_link", "position": [4.5, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620003.0, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620003.1, "frame_id": "map", "child_frame_id": "base_link", "position": [4.6499999999999995, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620003.2, "frame_id": "map", "child_frame_id": "base_link", "position": [4.8, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620003.2, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620003.3, "frame_id": "map", "child_frame_id": "base_link", "position": [4.95, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620003.4, "frame_id": "map", "child_frame_id": "base_link", "position": [5.1, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620003.4, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620003.5, "frame_id": "map", "child_frame_id": "base_link", "position": [5.25, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620003.6, "frame_id": "map", "child_frame_id": "base_link", "position": [5.3999999999999995, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620003.6, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620003.7, "frame_id": "map", "child_frame_id": "base_link", "position": [5.55, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620003.8, "frame_id": "map", "child_frame_id": "base_link", "position": [5.7, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620003.8, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
+{"type": "odom", "stamp_s": 1793620003.9, "frame_id": "map", "child_frame_id": "base_link", "position": [5.85, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "odom", "stamp_s": 1793620004.0, "frame_id": "map", "child_frame_id": "base_link", "position": [6.0, 0.0, 1.5], "quaternion_xyzw": [0.0, 0.0, 0.0, 1.0]}
+{"type": "cloud", "stamp_s": 1793620004.0, "frame_id": "base_link", "xyz": [[1.0, -2.0, 0.0], [1.0, 2.0, 0.0], [2.0, -2.0, 0.0], [2.0, 2.0, 0.0], [3.0, -2.0, 0.0], [3.0, 2.0, 0.0]]}
